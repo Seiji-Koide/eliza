@@ -5,7 +5,11 @@
 ;;;; File eliza.lisp: Advanced version of Eliza.
 ;;; Has more rules, and accepts input without parens.
 
-(requires "eliza1")
+(provide :eliza)
+
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (require :eliza1)
+  )
 
 ;;; ==============================
 
@@ -27,23 +31,15 @@
     (let* ((input (read-line-no-punct))
            (response (flatten (use-eliza-rules input))))
       (print-with-spaces response)
-      (if (equal response '(good bye)) (RETURN)))))
+      (if (equal response '(good bye)) (return)))))
 
-(defun print-with-spaces (list)
-  (mapc #'(lambda (x) (prin1 x) (princ " ")) list))
+;;;(defun print-with-spaces (list)
+;;;  (mapc #'(lambda (x) (prin1 x) (princ " ")) list))
 
 (defun print-with-spaces (list)
   (format t "~{~a ~}" list))
 
-;;; ==============================
-
-(defun mappend (fn &rest lists)	
-  "Apply fn to each element of lists and append the results."
-  (apply #'append (apply #'mapcar fn lists)))
-
-;;; ==============================
-
-(defparameter *eliza-rules*
+(setq *eliza-rules*
  '((((?* ?x) hello (?* ?y))      
     (How do you do.  Please state your problem.))
    (((?* ?x) computer (?* ?y))
@@ -164,6 +160,8 @@
    (((?* ?x) are (?* ?y))
     (Did you think they might not be ?y)
     (Possibly they are ?y))
+   (((?* ?x) bye)
+    (good bye))
    (((?* ?x))               
     (Very interesting) (I am not sure I understand you fully)
     (What does that suggest to you?) (Please continue) (Go on) 

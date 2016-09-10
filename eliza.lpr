@@ -1,10 +1,11 @@
-;; -*- lisp-version: "9.0 [64-bit Windows *SMP*] (Apr 2, 2015 11:03)"; cg: "9.0"; -*-
+;; -*- lisp-version: "9.0 [64-bit Windows *SMP*] (Aug 27, 2016 11:59)"; cg: "9.0"; -*-
 
 (in-package :cg-user)
 
 (define-project :name :eliza
   :modules (list (make-instance 'module :name "elizaaux.lisp")
-                 (make-instance 'module :name "eliza1.lisp"))
+                 (make-instance 'module :name "eliza1.lisp")
+                 (make-instance 'module :name "eliza.lisp"))
   :projects nil
   :libraries nil
   :editable-files nil

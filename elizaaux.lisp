@@ -5,6 +5,32 @@
 ;;; Auxiliary functions used by eliza1.lisp and eliza.lisp.
 ;;; Load this file before running any other programs.
 
+(provide :elizaaux)
+
+(defun flatten (the-list)
+  "Append together elements (or lists) in the list."
+  (mappend #'mklist the-list))
+
+(defun mklist (x)
+  "Return x if it is a list, otherwise (x)."
+  (if (listp x)
+      x
+      (list x)))
+
+(defun mappend (fn the-list)	
+  "Apply fn to each element of list and append the results."
+  (apply #'append (mapcar fn the-list)))
+
+(defun random-elt (choices)
+  "Choose an element from a list at random."
+  (elt choices (random (length choices))))
+
+;;;(defun mappend (fn &rest lists)	
+;;;  "Apply fn to each element of lists and append the results."
+;;;  (apply #'append (apply #'mapcar fn lists)))
+
+;;; ==============================
+
 (eval-when (:compile-toplevel :load-toplevel :execute)
     (defun starts-with (list x)
     "Is x a list whose first element is x?"
