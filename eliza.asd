@@ -1,3 +1,7 @@
+(eval-when (:compile-toplevel :load-toplevel :execute)
+  (require :asdf)
+  )
+
 (defpackage :scheme-system
   (:use :common-lisp :asdf))
 

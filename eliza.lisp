@@ -31,7 +31,7 @@
     (let* ((input (read-line-no-punct))
            (response (flatten (use-eliza-rules input))))
       (print-with-spaces response)
-      (if (equal response '(good bye)) (return)))))
+      (if (pat-match '((?* ?x) good bye (?* ?y)) response) (return)))))
 
 ;;;(defun print-with-spaces (list)
 ;;;  (mapc #'(lambda (x) (prin1 x) (princ " ")) list))
@@ -161,7 +161,7 @@
     (Did you think they might not be ?y)
     (Possibly they are ?y))
    (((?* ?x) bye)
-    (good bye))
+    (good bye and good luck))
    (((?* ?x))               
     (Very interesting) (I am not sure I understand you fully)
     (What does that suggest to you?) (Please continue) (Go on) 
