@@ -27,7 +27,7 @@
 (defun eliza ()
   "Respond to user input using pattern matching rules."
   (loop
-    (print 'eliza>)
+    (print 'eliza>)(force-output)
     (let* ((input (read-line-no-punct))
            (response (flatten (use-eliza-rules input))))
       (print-with-spaces response)
