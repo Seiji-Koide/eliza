@@ -93,7 +93,7 @@
 (defun eliza1 ()
   "Respond to user input using pattern matching rules."
   (loop
-    (print 'eliza>)
+    (print 'eliza>)(force-output)
     (write (flatten (use-eliza-rules (read))) :pretty t)))
 
 (defun use-eliza-rules (input)
