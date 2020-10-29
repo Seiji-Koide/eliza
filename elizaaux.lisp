@@ -40,7 +40,7 @@
 ;;;; PATTERN MATCHING FACILITY
 
 (defconstant fail nil)
-(defconstant no-bindings '((t . t)))
+(#-:sbcl defconstant #+:sbcl defparameter no-bindings '((t . t)))
 
 (defun match-variable (var input bindings)
   "Does VAR match input?  Uses (or updates) and returns bindings."
