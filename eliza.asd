@@ -2,10 +2,10 @@
   (require :asdf)
   )
 
-(defpackage :scheme-system
+(defpackage :eliza-system
   (:use :common-lisp :asdf))
 
-(in-package :scheme-system)
+(in-package :eliza-system)
 
 (defsystem :eliza
   :name "Eliza"
